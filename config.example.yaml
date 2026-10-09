@@ -1,0 +1,38 @@
+# Washing Machine Monitoring — Configuration (example)
+# ─────────────────────────────────────────────────────
+# 1. Copy this file: cp config.example.yaml config.yaml
+# 2. Fill in your real RTSP URL and tune the values below.
+# config.yaml is git-ignored; this file is the tracked template.
+
+# RTSP Source
+rtsp:
+  url: "rtsp://admin:YOUR_PASSWORD@192.168.x.x:554/onvif1"
+  width: 1920     # native camera resolution
+  height: 1080
+
+# Panel Detection
+detection:
+  # ROI coordinates in the resized display frame (display_width x display_height).
+  # Use roi_calibrator.py to find these values for your camera angle.
+  roi:
+    y_start: 186
+    y_end: 268
+    x_start: 506
+    x_end: 670
+  threshold: 200          # Grayscale value above which a pixel is "lit"
+  pixel_limit: 50         # Below this white-pixel count the panel is OFF
+  frame_skip: 30          # Analyse 1 frame every N (30 ≈ 1 check/sec at 30 fps)
+  consecutive_off: 2      # Consecutive OFF readings before alarm fires
+  display_width: 960
+  display_height: 540
+
+# Alarm
+alarm:
+  audio_path: "assets/musica.mp3"   # Replace with any .mp3 file you own
+  loop: true                         # Keep looping until the program is closed
+
+# Stream / Reconnection
+stream:
+  reconnect_attempts: 10
+  reconnect_delay_sec: 5
+  ffmpeg_timeout_sec: 10
