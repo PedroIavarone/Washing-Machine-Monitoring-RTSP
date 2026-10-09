@@ -1,0 +1,37 @@
+# ── Python ──────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.venv/
+venv/
+ENV/
+env/
+
+# ── Secrets & local config ──────────────────────────────────────────
+.env
+*.pem
+*.key
+
+# ── OS / Editor ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Project specifics ───────────────────────────────────────────────
+# config.yaml holds real credentials — never commit it.
+# Only config.example.yaml (with placeholders) is tracked.
+config.yaml
+
+# ── Logs & debug ────────────────────────────────────────────────────
+*.log
+debug_frames/
